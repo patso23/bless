@@ -19,6 +19,7 @@ function chunk(code, options) {
 }
 
 function chunkFile(filepath, options) {
+  console.log("chunkFile");
   return fsp.readFile(filepath, { encoding: 'utf8' })
     .then(code => {
       let chunkOptions = _.defaults(options, { source: filepath });

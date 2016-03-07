@@ -37,6 +37,7 @@ function *chunks(ast) {
 }
 
 export default function chunk(code, options) {
+  console.log("src/chunk.js chunk");
   let fullAst = css.parse(code, { source: options.source });
   let totalSelectorCount = 0;
   let data = [];

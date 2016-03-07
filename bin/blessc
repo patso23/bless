@@ -10,5 +10,9 @@ entry(process.argv)
   })
   .catch(function(err) {
     console.log(err.toString().red);
+    console.log(err.length);
+    for(var key in err) {
+    	console.log(key);
+    }
     process.exit(1);
   });

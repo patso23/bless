@@ -1,33 +1,50 @@
 {
-  "name": "bless",
-  "version": "4.0.0",
-  "description": "CSS Post-Processor that chunks CSS files per IE9 selector count restrictions",
-  "url": "http://blesscss.com",
-  "keywords": [
-    "css",
-    "parser",
-    "less",
-    "sass",
-    "stylus",
-    "ie9",
-    "selector-limit"
+  "_args": [
+    [
+      "bless@git://github.com/patso23/bless.git#master",
+      "C:\\Users\\poshea\\Source\\Repos\\public-website-mvc\\TheParkingSpot\\tps-webclient"
+    ]
   ],
-  "author": "Paul Young <paulyoungonline+bless@gmail.com>",
-  "maintainers": [
-    "Matt Smith <mtscout6+bless@gmail.com>",
-    "Alex Abenoja <abenojaalex@gmail.com>"
+  "_from": "git://github.com/patso23/bless.git#master",
+  "_id": "bless@4.0.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/bless",
+  "_phantomChildren": {},
+  "_requested": {
+    "hosted": {
+      "directUrl": "https://raw.githubusercontent.com/patso23/bless/master/package.json",
+      "gitUrl": "git://github.com/patso23/bless.git#master",
+      "httpsUrl": "git+https://github.com/patso23/bless.git#master",
+      "shortcut": "github:patso23/bless#master",
+      "ssh": "git@github.com:patso23/bless.git#master",
+      "sshUrl": "git+ssh://git@github.com/patso23/bless.git#master",
+      "type": "github"
+    },
+    "name": "bless",
+    "raw": "bless@git://github.com/patso23/bless.git#master",
+    "rawSpec": "git://github.com/patso23/bless.git#master",
+    "scope": null,
+    "spec": "git://github.com/patso23/bless.git#master",
+    "type": "hosted"
+  },
+  "_requiredBy": [
+    "#DEV:/"
   ],
-  "repository": "BlessCSS/bless",
-  "license": "MIT",
+  "_resolved": "git://github.com/patso23/bless.git#fbc4b7c5224c98466089d6c19170e8528483a3a6",
+  "_shasum": "0b92c9da78219619ce3181f9fad315262a724484",
+  "_shrinkwrap": null,
+  "_spec": "bless@git://github.com/patso23/bless.git#master",
+  "_where": "C:\\Users\\poshea\\Source\\Repos\\public-website-mvc\\TheParkingSpot\\tps-webclient",
+  "author": {
+    "email": "paulyoungonline+bless@gmail.com",
+    "name": "Paul Young"
+  },
   "bin": {
     "blessc": "./bin/blessc"
   },
-  "main": "./lib/index",
-  "directories": {
-    "test": "./test"
-  },
-  "engines": {
-    "node": ">=0.10.x"
+  "bugs": {
+    "url": "https://github.com/blesscss/bless/issues"
   },
   "dependencies": {
     "babel-runtime": "^5.1.11",
@@ -40,6 +57,7 @@
     "rx": "^2.4.9",
     "yargs": "^3.6.0"
   },
+  "description": "CSS Post-Processor that chunks CSS files per IE9 selector count restrictions",
   "devDependencies": {
     "babel": "^5.0.12",
     "babel-eslint": "^3.0.1",
@@ -51,10 +69,49 @@
     "istanbul": "^0.3.17",
     "mocha": "^2.2.1"
   },
+  "directories": {
+    "test": "./test"
+  },
+  "engines": {
+    "node": ">=0.10.x"
+  },
+  "gitHead": "fbc4b7c5224c98466089d6c19170e8528483a3a6",
+  "homepage": "https://github.com/blesscss/bless#readme",
+  "keywords": [
+    "css",
+    "ie9",
+    "less",
+    "parser",
+    "sass",
+    "selector-limit",
+    "stylus"
+  ],
+  "license": "MIT",
+  "main": "./lib/index",
+  "maintainers": [
+    {
+      "name": "Matt Smith",
+      "email": "mtscout6+bless@gmail.com"
+    },
+    {
+      "name": "Alex Abenoja",
+      "email": "abenojaalex@gmail.com"
+    }
+  ],
+  "name": "bless",
+  "optionalDependencies": {},
+  "readme": "# bless [![NPM version][npm-image]][npm-url] [![build status][travis-image]][travis-url] [![Dependencies][dependencies-image]][dependencies-url] [![Join the chat at https://gitter.im/BlessCSS/bless][gitter-image]][gitter-url]\r\n\r\nSometimes we can't get away from supporting Internet Explorer 9 and below. Unfortunately, this support can sometimes break our css due to [these limitations](http://blogs.msdn.com/b/ieinternals/archive/2011/05/14/10164546.aspx), and when it does break it is almost impossible to track down. How do you get around such a crippling limitation? Well, you can slap this `bless` on top of your css and you should be alright.\r\n\r\n`bless` analyzes your css files' selector counts and splits them appropriately, bringing them under the Internet Explorer's selector limit.\r\n\r\n## Installation\r\n\r\nTo use the cli tools:\r\n```\r\nnpm install -g bless\r\n```\r\n\r\nTo use the public api as part of your package:\r\n```\r\nnpm install bless\r\n```\r\n\r\n## CLI Usage\r\n\r\n```\r\nCommands:\r\n  count   checks an existing css file and fails if the selector count exceeds IE limits\r\n  chunk   breaks up css file into multiple files if it exceeds IE selector limits\r\n\r\nExamples:\r\n  blessc count <file|directory>\r\n  blessc count <file|directory> --no-color\r\n  blessc chunk <file|directory>  (chunked files will reside next to input css files with the format *.##.css)\r\n  blessc chunk <file|directory> --out-dir <output directory>\r\n  blessc chunk <file|directory> --sourcemaps (write out sourcemaps for css files with the format *.##.css.map)\r\n```\r\n\r\n## API Usage\r\n\r\n### `chunk(cssString, [options])`\r\nSeparate the cssString into chunks that can be used by IE.\r\n```\r\noptions:\r\n  source         the path to the file containing the provided css.\r\n  sourceMaps     a boolean for whether or not to output sourcemaps. source must be provided (defaults to false)\r\n\r\nreturns:\r\n  data                    An array of css strings for each css chunk\r\n  maps                    An array of css sourcemap strings for each css chunk. This will be empty if source is not provided or sourcemaps is not enabled\r\n  totalSelectorCount      The total number of selectors in the provided css\r\n\r\nexample:\r\n  var parsedData = chunk(code, { source: './path/to/css.css' });\r\n  parsedCss.data                  //An array of css strings for each css chunk\r\n  parsedCss.maps                  //An array of css sourcemap strings for each css chunk. This is empty if source is empty or sourcemaps is false.\r\n  parsedCss.totalSelectorCount    //The total number of selectors in the provided css file\r\n```\r\n\r\n### `chunkFile(filepath, options)`\r\nSeparates the provided file into chunks.\r\n```\r\noptions:\r\n  sourcemaps      A boolean for whether or not to output sourcemaps. (Defaults to false)\r\n\r\nreturns:\r\n  A promise object resolving the chunked data with the same properties as chunk()\r\n\r\nexample:\r\n  chunkfile('./path/to/css.css').then(function(parsedCss, { sourcemaps: true }) {\r\n    parsedCss.data                  //An array of css strings for each css chunk\r\n    parsedCss.maps                  //An array of css sourcemap strings for each css chunk. This will be empty if sourcemaps is false.\r\n    parsedCss.totalSelectorCount    //The total number of selectors in the provided css file\r\n  });\r\n```\r\n\r\n## License\r\n\r\nSee `LICENSE` file.\r\n\r\n> Copyright (c) Paul Young\r\n\r\n[npm-url]: https://npmjs.org/package/bless\r\n[npm-image]: http://img.shields.io/npm/v/bless.svg\r\n\r\n[travis-url]: https://travis-ci.org/BlessCSS/bless\r\n[travis-image]: https://travis-ci.org/BlessCSS/bless.svg?branch=master\r\n\r\n[dependencies-url]: https://david-dm.org/BlessCSS/bless\r\n[dependencies-image]: https://david-dm.org/BlessCSS/bless.svg\r\n\r\n[gitter-image]: https://badges.gitter.im/Join%20Chat.svg\r\n[gitter-url]: https://gitter.im/BlessCSS/bless\r\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blesscss/bless.git"
+  },
   "scripts": {
     "build": "rm -rf lib && babel src --out-dir lib",
-    "test": "./run-tests",
     "lint": "eslint ./",
-    "prepublish": "npm run test && npm run build"
-  }
+    "prepublish": "npm run test && npm run build",
+    "test": "./run-tests"
+  },
+  "url": "http://blesscss.com",
+  "version": "4.0.0"
 }

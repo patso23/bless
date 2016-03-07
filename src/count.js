@@ -5,6 +5,7 @@ import { SELECTOR_LIMIT } from './constants';
 import { expand } from './fs-utils';
 
 function count(ast) {
+  console.log("src/count.js count");
   function countRules(rules) {
     return rules.reduce((acc, rule) => acc + count(rule), 0);
   }
